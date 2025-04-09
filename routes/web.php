@@ -1,10 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EcoNewsController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/econews', [NewsController::class, 'index'])->name('econews');
+Route::get('/econews/category/{id}', [EcoNewsController::class, 'filterByCategory'])->name('econews.filter.category');
+Route::get('/econews/tag/{id}', [EcoNewsController::class, 'filterByTag'])->name('econews.filter.tag');
+Route::get('/econews/{id}', [App\Http\Controllers\NewsController::class, 'show'])->name('econews.detail');
 
 });
 
