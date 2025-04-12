@@ -23,4 +23,20 @@ class EcoCycle extends Model
         'jadwal_pengambilan', // Pastikan kolom ini ada
     ];
 
-}    
+    // Relasi dengan User (pemohon)
+    public function user()
+    {
+        return $this->belongsTo(User::class); // Client who submitted the request
+    }
+
+    // Relasi dengan Vendor (juga dari tabel users)
+    public function vendor()
+    {
+        return $this->belongsTo(Vendor::class); // Vendor handling the request
+    }
+
+    public function pointHistory()
+    {
+        return $this->belongsTo(User::class, 'user_id')->select(['id', 'name', 'points']);
+    }
+}
