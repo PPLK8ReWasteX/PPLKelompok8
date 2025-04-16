@@ -16,6 +16,8 @@ Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
 
+Route::get('/rankings', [UserController::class, 'rankings'])->name('rankings');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
     Route::get('/profile/edit', [UserController::class, 'editProfile'])->name('profile.edit');
@@ -30,3 +32,11 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/vendor/profile', function () {
     return view('vendor-profile');
 })->name('vendor.profile');
+
+
+Route::get('/admin/achievements', [\App\Http\Controllers\AchievementController::class, 'index'])->name('achievements.index');
+Route::get('/admin/achievements/create', [\App\Http\Controllers\AchievementController::class, 'create'])->name('achievements.create');
+Route::post('/admin/achievements', [\App\Http\Controllers\AchievementController::class, 'store'])->name('achievements.store');
+Route::get('/admin/achievements/{achievement}/edit', [\App\Http\Controllers\AchievementController::class, 'edit'])->name('achievements.edit');
+Route::put('/admin/achievements/{achievement}', [\App\Http\Controllers\AchievementController::class, 'update'])->name('achievements.update');
+Route::delete('/admin/achievements/{achievement}', [\App\Http\Controllers\AchievementController::class, 'destroy'])->name('achievements.destroy');
