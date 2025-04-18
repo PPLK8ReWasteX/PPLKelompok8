@@ -12,9 +12,9 @@ Route::get('/', function () {
 Route::get('/econews', [NewsController::class, 'index'])->name('econews');
 Route::get('/econews/category/{id}', [EcoNewsController::class, 'filterByCategory'])->name('econews.filter.category');
 Route::get('/econews/tag/{id}', [EcoNewsController::class, 'filterByTag'])->name('econews.filter.tag');
-Route::get('/econews/{id}', [NewsController::class, 'show'])->name('econews.detail');
+Route::get('/econews/{id}', [App\Http\Controllers\NewsController::class, 'show'])->name('econews.detail');
 
-// Jangan ada kurung tutup di sini!
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');

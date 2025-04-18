@@ -1,4 +1,3 @@
-
 @extends('layouts.layout')
 
 @section('title', 'Eco News')
