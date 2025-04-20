@@ -77,9 +77,47 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="bgc-white bd bdrs-3 p-20 mB-20">
+                        <h4 class="c-grey-900 mB-20">Riwayat Daur Ulang</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Kategori Sampah</th>
+                                    <th scope="col">Berat (kg)</th>
+                                    <th scope="col">Alamat</th>
+                                    <th scope="col">Pemohon</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Tanggal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($history as $index => $item)
+                                    <tr>
+                                        <th scope="row">{{ $index + 1 }}</th>
+                                        <td>{{ $item->kategori_sampah }}</td>
+                                        <td>{{ $item->berat }}</td>
+                                        <td>{{ $item->alamat }}</td>
+                                        <td>{{ $item->user->name }}</td>
+                                        <td>
+                                            @if ($item->status === 'approved')
+                                                <span class="badge bg-success">Accepted</span>
+                                            @elseif ($item->status === 'rejected')
+                                                <span class="badge bg-danger">Rejected</span>
+                                            @else
+                                                <span class="badge bg-warning text-dark">Pending</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ $item->updated_at->format('d-m-Y H:i') }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>        
+            </div>
         </div>
+    </div>
 </main>
 
 @endsection
