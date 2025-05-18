@@ -30,3 +30,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
+
+Route::get('/point', [UserController::class, 'points'])->name('point');
+
+
