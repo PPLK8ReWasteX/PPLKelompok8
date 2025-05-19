@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EcoNewsController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DonationController;
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,4 +26,5 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
     Route::post('/profile/upload-picture', [UserController::class, 'uploadProfilePicture'])->name('profile.uploadPicture');
     Route::post('/profile/deactivate', [UserController::class, 'deactivateAccount'])->name('profile.deactivate');
+    Route::get('/ecogive', [\App\Http\Controllers\DonationProgramController::class, 'userIndex'])->name('ecogive.index');
 });
