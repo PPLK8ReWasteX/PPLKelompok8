@@ -3,7 +3,7 @@
 @section('title', 'Store')
 
 @section('content')
-
+#updated
 <section class="section-padding" id="section_3">
     <div class="container">
         <div class="row">
