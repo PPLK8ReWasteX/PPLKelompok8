@@ -44,4 +44,20 @@ class DiscussionController extends Controller
 
         return redirect()->route('forum')->with('success', 'Reply added successfully!');
     }
+
+    public function like($discussionId)
+    {
+        $discussion = Discussion::findOrFail($discussionId);
+
+        // Check if the user already liked the discussion
+        if ($discussion->likes()->where('user_id', auth()->id())->exists()) {
+            return redirect()->route('forum')->with('error', 'You already liked this discussion.');
+        }
+
+        $discussion->likes()->create([
+            'user_id' => auth()->id(),
+        ]);
+
+        return redirect()->route('forum')->with('success', 'Discussion liked successfully!');
+    }
 }
