@@ -128,7 +128,7 @@
 
                                 <p class="mb-0">This is a Bootstrap 5.2.2 CSS template for charity organization websites. You can feel free to use it. Please tell your friends about TemplateMo website. Thank you. HTML CSS files updated on 20 Oct 2022.</p>
                             </div>
-                            
+                            <!-- Update tipis tipis PBI009A -->
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="custom-text-box mb-lg-0">
