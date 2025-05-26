@@ -45,7 +45,15 @@
                                 <h5>{{ $discussion->title }}</h5>
                                 <p>{{ $discussion->body }}</p>
                                 <small class="text-muted">By {{ $discussion->user->name }} on {{ $discussion->created_at->format('d M Y, H:i') }}</small>
-                                
+                                <div class="mt-2">
+                                    <!-- Like Button -->
+                                    <form method="POST" action="{{ route('forum.like', $discussion->id) }}" class="d-inline">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-outline-primary">
+                                            Like ({{ $discussion->likes->count() }})
+                                        </button>
+                                    </form>
+                                </div>
                                 <hr>
                                 <!-- Replies Section -->
                                 <h6>Replies:</h6>
