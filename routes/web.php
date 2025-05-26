@@ -27,4 +27,5 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile/upload-picture', [UserController::class, 'uploadProfilePicture'])->name('profile.uploadPicture');
     Route::post('/profile/deactivate', [UserController::class, 'deactivateAccount'])->name('profile.deactivate');
     Route::get('/ecogive', [\App\Http\Controllers\DonationProgramController::class, 'userIndex'])->name('ecogive.index');
+    Route::get('/ecogive/{donationProgram}', [\App\Http\Controllers\DonationProgramController::class, 'show'])->name('ecogive.show');
 });
