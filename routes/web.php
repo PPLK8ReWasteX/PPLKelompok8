@@ -26,6 +26,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
     Route::post('/profile/upload-picture', [UserController::class, 'uploadProfilePicture'])->name('profile.uploadPicture');
     Route::post('/profile/deactivate', [UserController::class, 'deactivateAccount'])->name('profile.deactivate');
+    Route::post('/donations/{donationProgram}/store', [\App\Http\Controllers\DonationController::class, 'store'])->name('donations.store');
+    Route::post('/donations/{donationProgram}/donate', [DonationController::class, 'donate'])->name('donations.donate');
     Route::get('/ecogive', [\App\Http\Controllers\DonationProgramController::class, 'userIndex'])->name('ecogive.index');
     Route::get('/ecogive/{donationProgram}', [\App\Http\Controllers\DonationProgramController::class, 'show'])->name('ecogive.show');
 });
