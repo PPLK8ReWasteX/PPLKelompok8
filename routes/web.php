@@ -25,6 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/edit', [UserController::class, 'editProfile'])->name('profile.edit');
     Route::put('/profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
     Route::post('/profile/upload-picture', [UserController::class, 'uploadProfilePicture'])->name('profile.uploadPicture');
+    Route::get('/profile/point-history', [\App\Http\Controllers\UserController::class, 'pointHistory'])->name('profile.pointHistory');
     Route::post('/profile/deactivate', [UserController::class, 'deactivateAccount'])->name('profile.deactivate');
     Route::post('/donations/{donationProgram}/store', [\App\Http\Controllers\DonationController::class, 'store'])->name('donations.store');
     Route::post('/donations/{donationProgram}/donate', [DonationController::class, 'donate'])->name('donations.donate');
