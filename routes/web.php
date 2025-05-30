@@ -1,12 +1,24 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EcoNewsController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DonationController;
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-});
+Route::get('/econews', [NewsController::class, 'index'])->name('econews');
+Route::get('/econews/category/{id}', [EcoNewsController::class, 'filterByCategory'])->name('econews.filter.category');
+Route::get('/econews/tag/{id}', [EcoNewsController::class, 'filterByTag'])->name('econews.filter.tag');
+Route::get('/econews/{id}', [App\Http\Controllers\NewsController::class, 'show'])->name('econews.detail');
+
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
@@ -14,3 +26,5 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
     Route::post('/profile/upload-picture', [UserController::class, 'uploadProfilePicture'])->name('profile.uploadPicture');
     Route::post('/profile/deactivate', [UserController::class, 'deactivateAccount'])->name('profile.deactivate');
+    Route::get('/ecogive', [\App\Http\Controllers\DonationProgramController::class, 'userIndex'])->name('ecogive.index');
+});
