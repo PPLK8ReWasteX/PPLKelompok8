@@ -30,7 +30,6 @@ class FeedbackController extends Controller
 
     public function userFeedbacks()
     {
-        $feedbacks = Feedback::where('user_id', Auth::id())->latest()->get();
-        return view('myfeedback', compact('feedbacks')); // Pass user feedbacks to the view
+       
     }
 }
