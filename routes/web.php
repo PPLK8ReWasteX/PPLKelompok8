@@ -41,3 +41,14 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::delete('/admin/forum/discussion/{discussion}', [\App\Http\Controllers\AdminForumController::class, 'deleteDiscussion'])->name('admin.forum.discussion.delete');
     Route::delete('/admin/forum/reply/{reply}', [\App\Http\Controllers\AdminForumController::class, 'deleteReply'])->name('admin.forum.reply.delete');
 });
+
+Route::middleware(['auth', 'role:Vendor'])->group(function () {
+    Route::get('/vendor-dashboard', function () {
+        return view('vendor-dashboard');
+    });
+
+    // Vendor self-management routes
+    Route::get('/vendor/profile', [\App\Http\Controllers\VendorController::class, 'createOrEdit'])->name('vendor.profile');
+    Route::post('/vendor/profile', [\App\Http\Controllers\VendorController::class, 'storeOrUpdate'])->name('vendor.profile.storeOrUpdate');
+    Route::get('/vendor/requests', [\App\Http\Controllers\VendorController::class, 'viewRequests'])->name('vendor.requests');
+});
