@@ -16,6 +16,10 @@ class User extends Authenticatable
         'email',
         'password',
         'profile_picture',
+<<<<<<< HEAD
+=======
+        'region', // Add region here
+>>>>>>> 9aa8567 (PPL8-53: Merge local changes with remote)
     ];
 
     protected $hidden = [
